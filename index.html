@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="A candidate concept demo for preliminary aviation and transport intelligence research.">
+  <title>AeroRoute Intelligence — Candidate Concept Demo</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="AeroRoute Intelligence home">
+      <span class="brand-mark" aria-hidden="true">AR</span>
+      <span><strong>AeroRoute</strong><small>INTELLIGENCE</small></span>
+    </a>
+    <div class="top-meta">
+      <span class="concept-label">Candidate concept demo prepared for <strong>Crisis24</strong></span>
+      <span class="privacy-pill"><i></i>No client data stored</span>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="workbench" aria-labelledby="assessment-title">
+      <div class="intro-row">
+        <div>
+          <p class="eyebrow">PRELIMINARY TRANSPORT INTELLIGENCE</p>
+          <h1 id="assessment-title">Route assessment workbench</h1>
+          <p>Combine route context, public aviation data and analyst judgement into a traceable first-pass brief.</p>
+        </div>
+        <div class="mode-card">
+          <span>DEMO MODE</span>
+          <strong>Public sources + transparent gaps</strong>
+          <small>Formal data agreements are identified where required.</small>
+        </div>
+      </div>
+
+      <form id="assessment-form" class="route-form">
+        <div class="field primary-field">
+          <label for="from">From</label>
+          <input id="from" name="from" list="airport-options" autocomplete="off" placeholder="Airport, city, IATA or ICAO" required>
+        </div>
+        <button class="swap-button" id="swap-route" type="button" aria-label="Swap origin and destination" title="Swap route">⇄</button>
+        <div class="field primary-field">
+          <label for="to">To</label>
+          <input id="to" name="to" list="airport-options" autocomplete="off" placeholder="Airport, city, IATA or ICAO" required>
+        </div>
+        <div class="field date-field">
+          <label for="depart-date">Departure</label>
+          <input id="depart-date" name="depart-date" type="date" required>
+        </div>
+        <button class="button button-primary" type="submit">Run assessment <span>→</span></button>
+
+        <datalist id="airport-options"></datalist>
+
+        <details class="advanced" open>
+          <summary>Trip and operating context</summary>
+          <div class="advanced-grid">
+            <div class="field">
+              <label for="airline">Airline / operator</label>
+              <input id="airline" name="airline" placeholder="e.g. Solomon Airlines">
+            </div>
+            <div class="field">
+              <label for="flight-number">Flight number</label>
+              <input id="flight-number" name="flight-number" placeholder="Optional">
+            </div>
+            <div class="field">
+              <label for="aircraft">Aircraft type</label>
+              <input id="aircraft" name="aircraft" placeholder="e.g. DHC-8-100">
+            </div>
+            <div class="field">
+              <label for="return-date">Return date</label>
+              <input id="return-date" name="return-date" type="date">
+            </div>
+            <div class="field">
+              <label for="traveller">Traveller nationality</label>
+              <input id="traveller" name="traveller" placeholder="Optional">
+            </div>
+            <div class="field">
+              <label for="risk-tolerance">Risk tolerance</label>
+              <select id="risk-tolerance" name="risk-tolerance">
+                <option value="low">Low — risk-averse</option>
+                <option value="standard" selected>Standard business travel</option>
+                <option value="essential">Essential travel</option>
+              </select>
+            </div>
+            <div class="field wide">
+              <label for="route-notes">Route, connections or mission constraints</label>
+              <input id="route-notes" name="route-notes" placeholder="Optional waypoints, required arrival, accessibility or operational constraints">
+            </div>
+            <div class="field">
+              <label for="alternative">Alternative transport</label>
+              <select id="alternative" name="alternative">
+                <option value="ferry-road">Ferry + road</option>
+                <option value="road">Road only</option>
+                <option value="rail">Rail</option>
+                <option value="none">No practical alternative</option>
+              </select>
+            </div>
+          </div>
+        </details>
+
+        <div class="form-actions">
+          <button class="text-button" id="load-demo" type="button">Load Honiara → Munda example</button>
+          <button class="text-button" id="reset-form" type="button">Reset</button>
+          <span class="form-note">Inputs remain in this browser session only.</span>
+        </div>
+      </form>
+    </section>
+
+    <section id="empty-state" class="empty-state">
+      <div class="empty-orbit" aria-hidden="true"><span></span></div>
+      <div>
+        <p class="eyebrow">READY FOR ANALYSIS</p>
+        <h2>Start with the route, then test the evidence.</h2>
+        <p>The demo separates operational risk from data confidence, timestamps every retrieval attempt and keeps a human analyst in the decision loop.</p>
+      </div>
+      <div class="empty-steps">
+        <span><b>01</b> Define journey</span>
+        <span><b>02</b> Retrieve public data</span>
+        <span><b>03</b> Review and decide</span>
+      </div>
+    </section>
+
+    <section id="results" class="results" hidden aria-live="polite">
+      <div class="result-toolbar">
+        <div>
+          <p class="eyebrow">ASSESSMENT OUTPUT</p>
+          <h2 id="route-title">Honiara to Munda</h2>
+          <p id="run-meta">Run ID · Extraction time</p>
+        </div>
+        <div class="toolbar-actions">
+          <button class="button button-quiet" id="copy-brief" type="button">Copy brief</button>
+          <button class="button button-primary" id="print-report" type="button">Export / print PDF</button>
+        </div>
+      </div>
+
+      <div id="status-banner" class="status-banner">
+        <span class="status-icon">!</span>
+        <div><strong>Preliminary recommendation</strong><p id="recommendation-text"></p></div>
+        <span id="confidence-badge" class="confidence-badge">MODERATE CONFIDENCE</span>
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="panel route-panel">
+          <div class="panel-heading">
+            <div><p class="section-kicker">ROUTE CONTEXT</p><h3>Journey corridor</h3></div>
+            <span id="distance-chip" class="data-chip">— km</span>
+          </div>
+          <div id="route-map" class="route-map" role="img" aria-label="Route diagram"></div>
+          <div id="route-facts" class="route-facts"></div>
+        </article>
+
+        <article class="panel summary-panel">
+          <div class="panel-heading">
+            <div><p class="section-kicker">EXECUTIVE SUMMARY</p><h3>What matters now</h3></div>
+          </div>
+          <ul id="summary-list" class="summary-list"></ul>
+          <div class="decision-triggers">
+            <strong>Decision triggers</strong>
+            <ul id="trigger-list"></ul>
+          </div>
+        </article>
+      </div>
+
+      <article class="panel risk-panel">
+        <div class="panel-heading">
+          <div><p class="section-kicker">SEPARATE RISK DIMENSIONS</p><h3>Risk and confidence review</h3></div>
+          <p>No opaque blended safety score</p>
+        </div>
+        <div id="risk-grid" class="risk-grid"></div>
+      </article>
+
+      <div class="dashboard-grid evidence-layout">
+        <article class="panel">
+          <div class="panel-heading">
+            <div><p class="section-kicker">LIVE PUBLIC RETRIEVAL</p><h3>Aviation weather</h3></div>
+            <span id="weather-state" class="data-chip pending">CHECKING</span>
+          </div>
+          <div id="weather-content" class="weather-content">
+            <div class="skeleton"></div><div class="skeleton short"></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <div><p class="section-kicker">ALTERNATIVE JOURNEY</p><h3>Air versus surface</h3></div>
+          </div>
+          <div id="comparison-table" class="comparison-table"></div>
+        </article>
+      </div>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div><p class="section-kicker">SOURCE &amp; EVIDENCE REGISTER</p><h3>Traceable retrieval log</h3></div>
+          <span class="data-chip">UTC TIMESTAMPS</span>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Source / purpose</th><th>Access</th><th>Published / valid</th><th>Retrieved</th><th>Confidence</th></tr></thead>
+            <tbody id="evidence-body"></tbody>
+          </table>
+        </div>
+        <p class="table-note">Where a source does not expose a publication time, the register states “Not provided by source.” A failed feed is recorded as unavailable, never as zero risk.</p>
+      </article>
+
+      <article class="panel analyst-panel">
+        <div class="panel-heading">
+          <div><p class="section-kicker">HUMAN-IN-THE-LOOP REVIEW</p><h3>Analyst judgement</h3></div>
+          <span class="data-chip">REQUIRED BEFORE ISSUE</span>
+        </div>
+        <div class="analyst-grid">
+          <div class="field"><label for="confirmed-facts">Confirmed facts</label><textarea id="confirmed-facts" rows="4"></textarea></div>
+          <div class="field"><label for="information-gaps">Information gaps / unverified items</label><textarea id="information-gaps" rows="4"></textarea></div>
+          <div class="field"><label for="mitigations">Mitigations</label><textarea id="mitigations" rows="4"></textarea></div>
+          <div class="field"><label for="analyst-recommendation">Analyst recommendation</label><textarea id="analyst-recommendation" rows="4"></textarea></div>
+        </div>
+        <div class="approval-row">
+          <div class="field"><label for="analyst-name">Analyst</label><input id="analyst-name" value="Gavilon Dean Basson"></div>
+          <div class="field"><label for="analyst-confidence">Confidence</label><select id="analyst-confidence"><option>Low</option><option selected>Moderate</option><option>High</option></select></div>
+          <label class="approval-check"><input id="approval-check" type="checkbox"> Reviewed for demonstration</label>
+        </div>
+      </article>
+
+      <article class="panel integrations-panel">
+        <div class="panel-heading">
+          <div><p class="section-kicker">ENTERPRISE DATA OPPORTUNITIES</p><h3>What formal access would add</h3></div>
+        </div>
+        <div class="integration-grid">
+          <div><b>NOTAM &amp; aeronautical data</b><span>EUROCONTROL EAD / ANSP feeds</span></div>
+          <div><b>Airline performance</b><span>OAG, Cirium or equivalent licensed data</span></div>
+          <div><b>Security intelligence</b><span>Curated threat, protest and GNSS interference feeds</span></div>
+          <div><b>Maritime intelligence</b><span>AIS, port and vessel-risk data providers</span></div>
+        </div>
+        <p>Potentially obtainable subject to provider approval, licensing, commercial terms and Crisis24’s internal arrangements.</p>
+      </article>
+    </section>
+
+    <section class="methodology">
+      <div><p class="eyebrow">DESIGN PRINCIPLE</p><h2>Evidence first. Judgement visible.</h2></div>
+      <div class="method-grid">
+        <span><b>01</b><strong>Scope</strong><small>Journey, traveller and mission constraints</small></span>
+        <span><b>02</b><strong>Collect</strong><small>Public, attributable sources and retrieval status</small></span>
+        <span><b>03</b><strong>Assess</strong><small>Separate risks, gaps and confidence</small></span>
+        <span><b>04</b><strong>Advise</strong><small>Mitigations, triggers and analyst sign-off</small></span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>AeroRoute Intelligence</strong>
+      <span>Concept and demonstration prepared by Gavilon Dean Basson</span>
+    </div>
+    <p>This proof-of-concept supports preliminary travel-intelligence research. It is not an operational flight-planning system, regulatory approval, airline safety certification or substitute for advice from the relevant aviation authority, operator, air navigation service provider or qualified analyst.</p>
+    <span class="watermark">UNOFFICIAL DEMO • CANDIDATE CONCEPT</span>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
