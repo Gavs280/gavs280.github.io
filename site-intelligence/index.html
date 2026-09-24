@@ -1,265 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Citra Site Intelligence proof of concept for spatial progress and quality monitoring." />
-  <title>Citra Site Intelligence</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Citra Site Intelligence - spatial progress and quality monitoring proof of concept." />
+<title>Citra Site Intelligence</title>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-mark">C</div>
-        <div>
-          <div class="brand-title">Citra Site Intelligence</div>
-          <div class="brand-subtitle">Spatial Progress Platform</div>
-        </div>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">C</div><div><div class="brand-title">Citra Site Intelligence</div><div class="brand-subtitle">Spatial Progress Platform</div></div></div>
+    <nav class="nav">
+      <button class="nav-item active" data-view="dashboard"><span>Executive Overview</span><small>POC</small></button>
+      <button class="nav-item" data-view="viewer"><span>3D Site Viewer</span></button>
+      <button class="nav-item" data-view="compare"><span>Time Comparison</span></button>
+      <button class="nav-item" data-view="capture"><span>Capture Ingestion</span></button>
+      <button class="nav-item" data-view="processing"><span>Private Reconstruction</span></button>
+      <button class="nav-item" data-view="quality"><span>Quality Intelligence</span></button>
+      <button class="nav-item" data-view="roadmap"><span>Project Roadmap</span></button>
+      <button class="nav-item" data-view="inspections"><span>Inspection Register</span></button>
+      <button class="nav-item" data-view="report"><span>Management Report</span></button>
+      <button class="nav-item" data-view="architecture"><span>Technical Boundary</span></button>
+    </nav>
+    <div class="sidebar-note"><strong>Proof of Concept</strong><p>Interactive demonstration using synthetic site data. No confidential project records are stored here.</p></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><div class="eyebrow">CENTRALBLUE · DEMONSTRATION PROJECT</div><h1 id="pageTitle">Executive Overview</h1><p id="pageSubtitle">A private spatial record of construction progress, change and quality.</p></div>
+      <div class="top-actions"><div class="status-chip"><span class="status-dot"></span> Prototype online</div><button class="button secondary" data-goto="viewer">Open 3D Site</button></div>
+    </header>
+
+    <section class="view active" id="dashboard">
+      <div class="metric-grid">
+        <article class="metric-card"><span>Latest capture</span><strong>23 Sep 2026</strong><small>312-image demo state</small></article>
+        <article class="metric-card"><span>Spatial coverage</span><strong>4.8 ha</strong><small>Coordinate-linked site model</small></article>
+        <article class="metric-card"><span>Progress delta</span><strong>+26.2%</strong><small>01 Sep to 23 Sep</small></article>
+        <article class="metric-card"><span>Human review</span><strong>4 items</strong><small>No automated final decisions</small></article>
       </div>
 
-      <nav class="nav" id="mainNav">
-        <button class="nav-item active" data-view="dashboard"><span>Overview</span><small>Live</small></button>
-        <button class="nav-item" data-view="viewer"><span>3D Site Viewer</span></button>
-        <button class="nav-item" data-view="compare"><span>Time Comparison</span></button>
-        <button class="nav-item" data-view="capture"><span>Capture Ingestion</span></button>
-        <button class="nav-item" data-view="processing"><span>Processing Pipeline</span></button>
-        <button class="nav-item" data-view="quality"><span>Quality Monitoring</span><small>AI-ready</small></button>
-        <button class="nav-item" data-view="inspections"><span>Inspection Markers</span></button>
-        <button class="nav-item" data-view="report"><span>Report Preview</span></button>
-        <button class="nav-item" data-view="architecture"><span>Technical Boundary</span></button>
-      </nav>
-
-      <div class="sidebar-note">
-        <strong>Proof of Concept</strong>
-        <p>Interactive spatial workflow using synthetic demonstration data. Production photogrammetry, storage and AI services are intentionally separated from this browser demo.</p>
+      <div class="two-col dashboard-grid">
+        <article class="panel hero-panel">
+          <span class="kicker">Product vision</span><h2>One private spatial record from capture to management decision</h2>
+          <div class="flow-strip">
+            <div class="flow-step done"><b>01</b><span>Capture</span><small>Geotagged imagery</small></div>
+            <div class="flow-step done"><b>02</b><span>Reconstruct</span><small>Private spatial core</small></div>
+            <div class="flow-step done"><b>03</b><span>Georeference</span><small>Coordinates</small></div>
+            <div class="flow-step active"><b>04</b><span>Compare</span><small>Date to date</small></div>
+            <div class="flow-step"><b>05</b><span>Review</span><small>Quality intelligence</small></div>
+          </div>
+          <div class="objective-box"><strong>Objective</strong><p>Convert repeat drone captures into a persistent spatial history that management can inspect by date, coordinate and construction zone, with human-verified progress and quality observations.</p></div>
+        </article>
+        <article class="panel"><span class="kicker">Capture history</span><h2>Recent spatial states</h2><div class="mini-timeline" id="miniTimeline"></div><button class="button primary full" data-goto="compare">Compare dates</button></article>
       </div>
-    </aside>
 
-    <main class="main">
-      <header class="topbar">
-        <div>
-          <div class="eyebrow">CENTRALBLUE · DEMO PROJECT</div>
-          <h1 id="pageTitle">Executive Overview</h1>
-          <p id="pageSubtitle">From drone imagery to spatial progress and quality intelligence.</p>
-        </div>
-        <div class="top-actions">
-          <div class="status-chip"><span class="status-dot"></span> Demo environment</div>
-          <button class="button secondary" data-goto="viewer">Open 3D Viewer</button>
-        </div>
-      </header>
+      <div class="three-col">
+        <article class="panel compact"><span class="kicker">Change detection</span><h3>Progressed</h3><div class="big-value positive">6 zones</div><p>Visible geometric growth in the selected comparison period.</p></article>
+        <article class="panel compact"><span class="kicker">Stable</span><h3>No material change</h3><div class="big-value">3 zones</div><p>Areas showing limited observable change between captures.</p></article>
+        <article class="panel compact"><span class="kicker">Review</span><h3>Potential concerns</h3><div class="big-value warning">4 items</div><p>Items flagged for authorised human verification before conclusion.</p></article>
+      </div>
 
-      <section class="view active" id="dashboard">
-        <div class="metric-grid">
-          <article class="metric-card"><span>Latest capture</span><strong>23 Sep 2026</strong><small>312 demo images</small></article>
-          <article class="metric-card"><span>Model coverage</span><strong>4.8 ha</strong><small>Site-grid aligned</small></article>
-          <article class="metric-card"><span>Progress change</span><strong>+16.2%</strong><small>vs. previous capture</small></article>
-          <article class="metric-card"><span>Review points</span><strong>4</strong><small>2 medium · 2 low</small></article>
-        </div>
+      <article class="panel"><span class="kicker">Management value</span><h2>Designed around Citra construction decisions</h2><div class="value-grid"><div><b>Progress evidence</b><span>Revisit the same coordinate across dates.</span></div><div><b>Quality traceability</b><span>Link observations to a precise spatial location.</span></div><div><b>Private processing</b><span>Keep project imagery and model outputs under Citra control.</span></div><div><b>Future integration</b><span>Connect spatial states to Mission Control project records.</span></div></div></article>
+    </section>
 
-        <div class="two-col dashboard-grid">
-          <article class="panel hero-panel">
-            <div class="panel-head">
-              <div><span class="kicker">Operating model</span><h2>Drone imagery → 3D reconstruction → coordinates → time comparison → quality monitoring</h2></div>
-            </div>
-            <div class="flow-strip">
-              <div class="flow-step done"><b>01</b><span>Capture</span><small>Geotagged imagery</small></div>
-              <div class="flow-step done"><b>02</b><span>Reconstruct</span><small>Spatial model</small></div>
-              <div class="flow-step done"><b>03</b><span>Georeference</span><small>Project grid</small></div>
-              <div class="flow-step active"><b>04</b><span>Compare</span><small>Date-to-date</small></div>
-              <div class="flow-step"><b>05</b><span>Review</span><small>Quality intelligence</small></div>
-            </div>
-            <div class="objective-box">
-              <strong>Objective</strong>
-              <p>Create one spatial record of a site that can be revisited over time, compared by location, annotated by coordinate and prepared for automated quality and progress analysis.</p>
-            </div>
-          </article>
+    <section class="view" id="viewer">
+      <div class="viewer-layout">
+        <article class="panel viewer-panel"><div class="panel-head viewer-head"><div><span class="kicker">Interactive spatial state</span><h2>Site model · <span id="viewerDateLabel">23 Sep 2026</span></h2></div><div class="viewer-tools"><button class="tool-button" id="resetCamera">Reset</button><button class="tool-button" id="toggleGrid">Grid</button><button class="tool-button" id="toggleMarkers">Markers</button></div></div><div id="threeViewer" class="three-viewer"><div class="viewer-badge">Drag to rotate · Scroll to zoom · Click site to inspect</div><div class="coords-overlay" id="coordsOverlay">X 0.00 · Y 0.00 · Z 0.00</div></div></article>
+        <aside class="panel inspector-panel"><span class="kicker">Spatial inspector</span><h2>Selected point</h2><div class="coord-grid"><div><span>Easting</span><strong id="coordX">0.00 m</strong></div><div><span>Northing</span><strong id="coordZ">0.00 m</strong></div><div><span>Elevation</span><strong id="coordY">0.00 m</strong></div><div><span>Reference</span><strong>SITE-GRID</strong></div></div><div class="field"><label>Inspection note</label><textarea id="inspectionNote" placeholder="Record an observation at this coordinate..."></textarea></div><button class="button primary full" id="saveMarker">Save inspection marker</button><div class="divider"></div><span class="kicker">Display capture</span><select class="select" id="viewerDateSelect"></select></aside>
+      </div>
+    </section>
 
-          <article class="panel">
-            <div class="panel-head"><div><span class="kicker">Capture timeline</span><h2>Recent spatial states</h2></div></div>
-            <div class="mini-timeline" id="miniTimeline"></div>
-            <button class="button primary full" data-goto="compare">Compare capture dates</button>
-          </article>
-        </div>
+    <section class="view" id="compare">
+      <div class="two-col compare-controls"><article class="panel"><span class="kicker">Baseline</span><h2>Date A</h2><select class="select" id="dateASelect"></select></article><article class="panel"><span class="kicker">Comparison</span><h2>Date B</h2><select class="select" id="dateBSelect"></select></article></div>
+      <article class="panel compare-panel"><div class="panel-head"><div><span class="kicker">Spatial overlay</span><h2>Same place, different dates</h2></div><div class="mode-toggle"><button class="mode active" data-mode="blend">Blend</button><button class="mode" data-mode="difference">Change focus</button></div></div><div id="compareViewer" class="three-viewer compare-viewer"><div class="viewer-badge">Earlier state = warm layer · Later state = blue layer</div></div><div class="blend-control"><span id="blendALabel">Earlier</span><input type="range" min="0" max="100" value="65" id="blendSlider" /><span id="blendBLabel">Later</span></div></article>
+      <div class="three-col" id="changeCards"></div>
+      <article class="panel"><span class="kicker">Capture history</span><h2>Timeline</h2><div class="timeline" id="captureTimeline"></div></article>
+    </section>
 
-        <div class="three-col">
-          <article class="panel compact"><span class="kicker">Change detection</span><h3>Progressed</h3><div class="big-value positive">6 zones</div><p>Visible construction growth between selected dates.</p></article>
-          <article class="panel compact"><span class="kicker">Stable</span><h3>No material change</h3><div class="big-value">3 zones</div><p>Areas with limited observable geometric change.</p></article>
-          <article class="panel compact"><span class="kicker">Review</span><h3>Potential concerns</h3><div class="big-value warning">4 items</div><p>Items requiring human verification before any conclusion.</p></article>
-        </div>
-      </section>
+    <section class="view" id="capture">
+      <div class="two-col">
+        <article class="panel"><span class="kicker">New spatial capture</span><h2>Upload drone imagery</h2><p class="muted">Select overlapping site photographs. This browser demonstration reads local file information and previews selected images; production processing will occur in a private controlled environment.</p><div class="upload-zone" id="uploadZone"><div class="upload-icon">↑</div><strong>Drop images here or click to select</strong><span>JPEG / PNG · multiple files supported</span><input type="file" accept="image/*" multiple id="captureFiles" /></div><div class="actions"><button class="button secondary" id="loadDemoCapture">Load demonstration capture</button></div><div class="preview-grid" id="imagePreviewGrid"></div></article>
+        <article class="panel"><span class="kicker">Capture manifest</span><h2 id="captureManifestTitle">No capture selected</h2><div class="manifest-grid"><div><span>Images</span><strong id="manifestCount">—</strong></div><div><span>Total size</span><strong id="manifestSize">—</strong></div><div><span>Location metadata</span><strong id="manifestGps">—</strong></div><div><span>Capture time</span><strong id="manifestTime">—</strong></div><div><span>Flight altitude</span><strong id="manifestAltitude">—</strong></div><div><span>Overlap readiness</span><strong id="manifestOverlap">—</strong></div></div><div class="notice info"><strong>Production gate:</strong> imagery must pass metadata, overlap, image-quality and project-assignment checks before reconstruction.</div></article>
+      </div>
+    </section>
 
-      <section class="view" id="viewer">
-        <div class="viewer-layout">
-          <article class="panel viewer-panel">
-            <div class="panel-head viewer-head">
-              <div><span class="kicker">Interactive 3D model</span><h2>Site state · <span id="viewerDateLabel">23 Sep 2026</span></h2></div>
-              <div class="viewer-tools">
-                <button class="tool-button" id="resetCamera">Reset view</button>
-                <button class="tool-button" id="toggleGrid">Grid</button>
-                <button class="tool-button" id="toggleMarkers">Markers</button>
-              </div>
-            </div>
-            <div id="threeViewer" class="three-viewer">
-              <div class="viewer-badge">Drag to rotate · Scroll to zoom · Click ground to inspect</div>
-              <div class="coords-overlay" id="coordsOverlay">X 0.00 · Y 0.00 · Z 0.00</div>
-            </div>
-          </article>
+    <section class="view" id="processing">
+      <article class="panel"><div class="panel-head"><div><span class="kicker">Private reconstruction workflow</span><h2>Images to spatial state</h2></div><button class="button primary" id="runPipeline">Run workflow demonstration</button></div><div class="pipeline" id="pipelineSteps"></div><div class="notice warning"><strong>Prototype boundary:</strong> this interface demonstrates workflow orchestration. Production reconstruction requires dedicated compute, storage and the private reconstruction core described in the project charter.</div></article>
+      <div class="two-col"><article class="panel"><span class="kicker">Readiness controls</span><h2>Capture checks</h2><table class="data-table"><tr><td>Image overlap</td><td><span class="pill good">Pass</span></td></tr><tr><td>Project assignment</td><td><span class="pill good">Assigned</span></td></tr><tr><td>Coordinate consistency</td><td><span class="pill neutral">Demo</span></td></tr><tr><td>Blur / exposure screening</td><td><span class="pill neutral">Ready</span></td></tr></table></article><article class="panel"><span class="kicker">Spatial outputs</span><h2>Production artefacts</h2><ul class="clean-list"><li>Camera alignment and image relationships</li><li>Dense spatial point representation</li><li>Textured 3D site model</li><li>Coordinate-linked project state</li><li>Orthographic mapping layers where required</li><li>Versioned date state for comparison</li></ul></article></div>
+    </section>
 
-          <aside class="panel inspector-panel">
-            <span class="kicker">Selected point</span>
-            <h2>Spatial inspector</h2>
-            <div class="coord-grid">
-              <div><span>Easting</span><strong id="coordX">0.00 m</strong></div>
-              <div><span>Northing</span><strong id="coordZ">0.00 m</strong></div>
-              <div><span>Elevation</span><strong id="coordY">0.00 m</strong></div>
-              <div><span>Reference</span><strong>SITE-GRID</strong></div>
-            </div>
-            <div class="field"><label>Inspection note</label><textarea id="inspectionNote" placeholder="Add an observation for this coordinate..."></textarea></div>
-            <button class="button primary full" id="saveMarker">Save inspection marker</button>
-            <div class="divider"></div>
-            <span class="kicker">Display capture</span>
-            <select class="select" id="viewerDateSelect"></select>
-            <div class="legend">
-              <div><span class="legend-dot built"></span> Constructed geometry</div>
-              <div><span class="legend-dot planned"></span> Planned / incomplete</div>
-              <div><span class="legend-dot marker"></span> Inspection point</div>
-            </div>
-          </aside>
-        </div>
-      </section>
+    <section class="view" id="quality"><div class="two-col quality-layout"><article class="panel"><div class="panel-head"><div><span class="kicker">Quality intelligence</span><h2>Review queue</h2></div><span class="pill neutral">Simulated observations</span></div><div id="qualityList" class="quality-list"></div></article><article class="panel"><span class="kicker">Selected observation</span><h2 id="qualityTitle">Wall progress variance</h2><div class="quality-score"><span>Review priority</span><strong id="qualityPriority">Medium</strong></div><p id="qualityDescription" class="muted">Observed geometry appears behind the expected state for this zone. Human verification is required.</p><div class="coord-box" id="qualityCoord">Grid E 18.4 m · N 27.6 m</div><div class="divider"></div><label class="check-row"><input type="checkbox" /> Human inspection completed</label><label class="check-row"><input type="checkbox" /> Evidence attached</label><label class="check-row"><input type="checkbox" /> Action assigned</label><div class="notice info"><strong>Control:</strong> automated analysis flags and prioritises; authorised staff remain responsible for final quality conclusions.</div></article></div></section>
 
-      <section class="view" id="compare">
-        <div class="two-col compare-controls">
-          <article class="panel">
-            <span class="kicker">Baseline</span><h2>Date A</h2>
-            <select class="select" id="dateASelect"></select>
-          </article>
-          <article class="panel">
-            <span class="kicker">Comparison</span><h2>Date B</h2>
-            <select class="select" id="dateBSelect"></select>
-          </article>
-        </div>
+    <section class="view" id="roadmap">
+      <article class="panel"><span class="kicker">Programme plan</span><h2>From proof of concept to production platform</h2><div class="roadmap"><div class="road-phase done"><b>Phase 0</b><span>Concept & interface POC</span><small>Complete / refining</small></div><div class="road-phase active"><b>Phase 1</b><span>Private reconstruction pilot</span><small>8 weeks</small></div><div class="road-phase"><b>Phase 2</b><span>Time comparison & measurement</span><small>8 weeks</small></div><div class="road-phase"><b>Phase 3</b><span>Quality intelligence</span><small>10 weeks</small></div><div class="road-phase"><b>Phase 4</b><span>Mission Control integration</span><small>8 weeks</small></div><div class="road-phase"><b>Phase 5</b><span>Operational hardening</span><small>8 weeks</small></div></div></article>
+      <div class="two-col"><article class="panel"><span class="kicker">Pilot success gate</span><h2>Phase 1 acceptance</h2><ul class="clean-list checks"><li>Process a controlled real drone dataset privately</li><li>Generate a navigable textured 3D site state</li><li>Preserve real-world coordinate relationship</li><li>Store a repeatable project/capture record</li><li>Produce an output usable by the web viewer</li><li>Document accuracy, processing time and hardware load</li></ul></article><article class="panel"><span class="kicker">Governance</span><h2>Human accountability remains explicit</h2><ul class="clean-list"><li>Defined product owner and technical owner</li><li>Role-based access to project imagery</li><li>Versioned processing settings and outputs</li><li>Human approval of quality observations</li><li>Documented model limitations and accuracy</li><li>Formal change control for production releases</li></ul></article></div>
+    </section>
 
-        <article class="panel compare-panel">
-          <div class="panel-head">
-            <div><span class="kicker">Spatial overlay</span><h2>Time-based site comparison</h2></div>
-            <div class="mode-toggle"><button class="mode active" data-mode="blend">Blend</button><button class="mode" data-mode="difference">Change focus</button></div>
-          </div>
-          <div id="compareViewer" class="three-viewer compare-viewer"><div class="viewer-badge">Earlier state = warm outline · Later state = solid model</div></div>
-          <div class="blend-control">
-            <span id="blendALabel">Earlier</span><input type="range" min="0" max="100" value="65" id="blendSlider" /><span id="blendBLabel">Later</span>
-          </div>
-        </article>
+    <section class="view" id="inspections"><article class="panel"><div class="panel-head"><div><span class="kicker">Spatial inspection register</span><h2>Coordinate-linked observations</h2></div><button class="button secondary" data-goto="viewer">Add marker in 3D</button></div><table class="data-table" id="inspectionTable"><thead><tr><th>ID</th><th>Date</th><th>Coordinate</th><th>Observation</th><th>Status</th></tr></thead><tbody></tbody></table></article></section>
 
-        <div class="three-col" id="changeCards"></div>
+    <section class="view" id="report"><article class="report-sheet"><div class="report-head"><div><span>CITRA SITE INTELLIGENCE</span><h2>Spatial Progress & Quality Review</h2></div><div class="report-meta">Demonstration Project<br/>23 Sep 2026</div></div><div class="report-summary"><div><span>Comparison period</span><strong>01 Sep → 23 Sep</strong></div><div><span>Progress change</span><strong>+26.2%</strong></div><div><span>Review points</span><strong>4</strong></div></div><h3>Executive summary</h3><p>The selected period demonstrates measurable geometric progression across the synthetic construction site. Six zones show visible progression, three remain materially stable, and four observations require authorised human verification.</p><h3>Spatial observations</h3><table class="data-table"><tr><th>Zone</th><th>Change</th><th>Assessment</th></tr><tr><td>Block B</td><td>Wall height increased</td><td>Progress evident</td></tr><tr><td>Block D</td><td>Roof geometry introduced</td><td>Progress evident</td></tr><tr><td>Service corridor</td><td>Limited change</td><td>Review against programme</td></tr><tr><td>North edge</td><td>Surface variation</td><td>Site verification required</td></tr></table><h3>Method note</h3><p>This proof of concept uses synthetic geometry and simulated observations. Production reporting will be generated from privately processed drone imagery, project coordinates, verified comparison outputs and authorised review records.</p><div class="report-footer">Proof of Concept · Synthetic demonstration data</div></article><div class="report-actions"><button class="button primary" onclick="window.print()">Print / Save PDF</button></div></section>
 
-        <article class="panel">
-          <div class="panel-head"><div><span class="kicker">Capture history</span><h2>Timeline</h2></div></div>
-          <div class="timeline" id="captureTimeline"></div>
-        </article>
-      </section>
+    <section class="view" id="architecture"><div class="two-col"><article class="panel"><span class="kicker">Interactive now</span><h2>Proof-of-concept functions</h2><ul class="clean-list checks"><li>Browser-based spatial site navigation</li><li>Multiple dated construction states</li><li>Coordinate-linked inspection records</li><li>Date overlay and change comparison</li><li>Multi-image capture ingestion</li><li>Private processing workflow simulation</li><li>Quality review queue</li><li>Management report preview</li></ul></article><article class="panel"><span class="kicker">Production environment</span><h2>Secure services required</h2><ul class="clean-list"><li>Private image and model storage</li><li>Dedicated reconstruction compute</li><li>Authenticated project access</li><li>Coordinate and survey controls</li><li>Versioned model history</li><li>Automated analysis services</li><li>Mission Control integration</li><li>Audit, backup and recovery</li></ul></article></div><article class="panel architecture-flow"><span class="kicker">Target operating model</span><h2>Private end-to-end pathway</h2><div class="arch-row"><div>Drone capture</div><span>→</span><div>Secure ingestion</div><span>→</span><div>Private reconstruction</div><span>→</span><div>Spatial data store</div><span>→</span><div>3D comparison</div><span>→</span><div>Quality intelligence</div></div></article></section>
 
-      <section class="view" id="capture">
-        <div class="two-col">
-          <article class="panel">
-            <span class="kicker">New capture</span><h2>Drone imagery ingestion</h2>
-            <p class="muted">Select a set of overlapping site photographs. This proof of concept reads browser file information only; production geospatial metadata extraction will be performed server-side.</p>
-            <div class="upload-zone" id="uploadZone">
-              <div class="upload-icon">↑</div>
-              <strong>Drop image files here</strong>
-              <span>or choose JPEG / PNG files</span>
-              <input type="file" accept="image/*" multiple id="captureFiles" />
-            </div>
-            <div class="actions"><button class="button secondary" id="loadDemoCapture">Load demo capture manifest</button></div>
-          </article>
-          <article class="panel">
-            <span class="kicker">Capture manifest</span><h2 id="captureManifestTitle">No capture selected</h2>
-            <div class="manifest-grid">
-              <div><span>Images</span><strong id="manifestCount">—</strong></div>
-              <div><span>Total size</span><strong id="manifestSize">—</strong></div>
-              <div><span>GPS metadata</span><strong id="manifestGps">—</strong></div>
-              <div><span>Capture time</span><strong id="manifestTime">—</strong></div>
-              <div><span>Flight altitude</span><strong id="manifestAltitude">—</strong></div>
-              <div><span>Overlap</span><strong id="manifestOverlap">—</strong></div>
-            </div>
-            <div class="notice info"><strong>Production path:</strong> validate EXIF/GNSS metadata, image overlap and project assignment before reconstruction begins.</div>
-          </article>
-        </div>
-      </section>
-
-      <section class="view" id="processing">
-        <article class="panel">
-          <div class="panel-head"><div><span class="kicker">Photogrammetry workflow</span><h2>Reconstruction pipeline</h2></div><button class="button primary" id="runPipeline">Run demo pipeline</button></div>
-          <div class="pipeline" id="pipelineSteps"></div>
-          <div class="notice warning"><strong>Important:</strong> the processing animation demonstrates workflow orchestration only. A production version must connect to a dedicated photogrammetry engine and compute infrastructure for real reconstruction.</div>
-        </article>
-        <div class="two-col">
-          <article class="panel"><span class="kicker">Input checks</span><h2>Capture readiness</h2><table class="data-table"><tr><td>Image overlap</td><td><span class="pill good">Pass</span></td></tr><tr><td>Project reference</td><td><span class="pill good">Assigned</span></td></tr><tr><td>GNSS consistency</td><td><span class="pill neutral">Demo</span></td></tr><tr><td>Blur / exposure screening</td><td><span class="pill neutral">Ready for service</span></td></tr></table></article>
-          <article class="panel"><span class="kicker">Model output</span><h2>Expected production artefacts</h2><ul class="clean-list"><li>Aligned camera positions</li><li>Sparse and dense point clouds</li><li>Textured 3D mesh</li><li>Georeferenced model</li><li>Orthomosaic / spatial layers where required</li><li>Versioned capture state for time comparison</li></ul></article>
-        </div>
-      </section>
-
-      <section class="view" id="quality">
-        <div class="two-col quality-layout">
-          <article class="panel">
-            <div class="panel-head"><div><span class="kicker">Quality intelligence</span><h2>Review queue</h2></div><span class="pill neutral">Simulated observations</span></div>
-            <div id="qualityList" class="quality-list"></div>
-          </article>
-          <article class="panel">
-            <span class="kicker">Selected observation</span><h2 id="qualityTitle">Wall progress variance</h2>
-            <div class="quality-score"><span>Review priority</span><strong id="qualityPriority">Medium</strong></div>
-            <p id="qualityDescription" class="muted">Observed geometry appears behind the expected construction state for this zone. Human verification is required.</p>
-            <div class="coord-box" id="qualityCoord">Grid E 18.4 m · N 27.6 m</div>
-            <div class="divider"></div>
-            <label class="check-row"><input type="checkbox" /> Human inspection completed</label>
-            <label class="check-row"><input type="checkbox" /> Evidence attached</label>
-            <label class="check-row"><input type="checkbox" /> Action assigned</label>
-            <div class="notice info"><strong>Control:</strong> automated analysis should flag and prioritise; final quality conclusions remain subject to authorised human review.</div>
-          </article>
-        </div>
-      </section>
-
-      <section class="view" id="inspections">
-        <article class="panel">
-          <div class="panel-head"><div><span class="kicker">Spatial inspection register</span><h2>Coordinate-linked observations</h2></div><button class="button secondary" data-goto="viewer">Add marker in 3D</button></div>
-          <table class="data-table" id="inspectionTable"><thead><tr><th>ID</th><th>Date</th><th>Coordinate</th><th>Observation</th><th>Status</th></tr></thead><tbody></tbody></table>
-        </article>
-      </section>
-
-      <section class="view" id="report">
-        <article class="report-sheet" id="reportSheet">
-          <div class="report-head"><div><span>CITRA SITE INTELLIGENCE</span><h2>Spatial Progress & Quality Review</h2></div><div class="report-meta">Demo Project<br/>23 Sep 2026</div></div>
-          <div class="report-summary"><div><span>Comparison period</span><strong>01 Sep → 23 Sep 2026</strong></div><div><span>Progress change</span><strong>+16.2%</strong></div><div><span>Review points</span><strong>4</strong></div></div>
-          <h3>Executive summary</h3><p>The comparison indicates measurable construction progression across the demo site, with structural advancement concentrated in Blocks B and D. Four review points remain open for human verification. No automated observation in this proof of concept should be treated as a final quality determination.</p>
-          <h3>Change observations</h3><table class="data-table"><tr><th>Zone</th><th>Change</th><th>Assessment</th></tr><tr><td>Block B</td><td>Wall height increased</td><td>Progress evident</td></tr><tr><td>Block D</td><td>Roof structure introduced</td><td>Progress evident</td></tr><tr><td>Service corridor</td><td>Limited geometric change</td><td>Review programme</td></tr><tr><td>North edge</td><td>Surface irregularity</td><td>Verify on site</td></tr></table>
-          <h3>Method note</h3><p>This proof of concept demonstrates a proposed spatial workflow using synthetic geometry and sample observations. Production reports would be generated from processed drone imagery, project coordinates, verified comparison outputs and authorised review records.</p>
-          <div class="report-footer">Proof of Concept · Synthetic demonstration data</div>
-        </article>
-        <div class="report-actions"><button class="button primary" onclick="window.print()">Print / Save PDF</button></div>
-      </section>
-
-      <section class="view" id="architecture">
-        <div class="two-col">
-          <article class="panel">
-            <span class="kicker">Current proof of concept</span><h2>What is interactive now</h2>
-            <ul class="clean-list checks"><li>Browser-based 3D site navigation</li><li>Multiple dated construction states</li><li>Coordinate-linked inspection markers</li><li>Time overlay and change-focused comparison</li><li>Capture ingestion workflow</li><li>Reconstruction pipeline orchestration</li><li>Quality review queue</li><li>Report generation preview</li></ul>
-          </article>
-          <article class="panel">
-            <span class="kicker">Production services</span><h2>What requires secure backend infrastructure</h2>
-            <ul class="clean-list"><li>Real photogrammetry reconstruction from drone photographs</li><li>Large image and model storage</li><li>Authenticated project access and permissions</li><li>Coordinate-system transformation and survey controls</li><li>Model versioning and long-term capture history</li><li>Automated computer-vision / AI analysis services</li><li>Mission Control and project-data integration</li><li>Audit, retention, backup and recovery controls</li></ul>
-          </article>
-        </div>
-        <article class="panel architecture-flow">
-          <span class="kicker">Target architecture</span><h2>Scalable production pathway</h2>
-          <div class="arch-row"><div>Drone capture</div><span>→</span><div>Secure upload</div><span>→</span><div>Photogrammetry compute</div><span>→</span><div>Spatial data store</div><span>→</span><div>3D web viewer</div><span>→</span><div>Quality intelligence</div></div>
-        </article>
-      </section>
-
-      <footer>Unofficial proof of concept · Synthetic demonstration data · No production or confidential project records are stored in this site.</footer>
-    </main>
-  </div>
-
-  <script type="module" src="app.js"></script>
+    <footer>Unofficial proof of concept · Synthetic demonstration data · No confidential Citra project data is stored in this site.</footer>
+  </main>
+</div>
+<script src="app.js"></script>
 </body>
 </html>
