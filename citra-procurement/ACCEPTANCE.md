@@ -1,6 +1,6 @@
 # Phase 1 Acceptance Register
 
-Status key: ✅ implemented/represented in the interactive prototype; 🧩 production implementation requires Phase 2 backend/integration.
+Status key: ✅ represented in the Phase 1 design or interface; 🧩 requires production backend/integration. A check mark does not establish operational implementation or acceptance testing. The Working Lifecycle Demo connects selected stages using synthetic browser-local data; all 143 requirements remain subject to detailed production verification.
 
 1. ✅ Create GitHub project path
 2. ✅ Application foundation
@@ -147,4 +147,4 @@ Status key: ✅ implemented/represented in the interactive prototype; 🧩 produ
 143. ✅ Phase 2 backlog boundary established
 
 ## Acceptance note
-Phase 1 is an interactive front-end proof-of-concept. Items marked 🧩 are deliberately simulated because implementation with real identities, sensitive records, APIs, SMS/email, confidential budgets, immutable audit storage and production documents requires a secure server-side environment rather than a public GitHub Pages repository.
+Phase 1 is an interactive front-end proof-of-concept. The Working Lifecycle Demo supports a sample registration, selected file name, review and correction, opportunity, submission receipt, outcome, contract stages and local activity history. Selected file contents are not transmitted or retained; browser storage is not shared across users or devices. The original illustrative dashboard figures and many other controls remain static examples. Items marked 🧩 are deliberately simulated because implementation with real identities, sensitive records, APIs, SMS/email, confidential budgets, immutable audit storage and production documents requires a secure server-side environment rather than a public GitHub Pages repository.
