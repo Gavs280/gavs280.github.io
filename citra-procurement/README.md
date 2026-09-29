@@ -8,6 +8,11 @@ The purpose of this README is to explain, in management language, **what each of
 ## Prototype URL
 `https://gavs280.github.io/citra-procurement/`
 
+## Working lifecycle demo (29 September 2026)
+The **Working Lifecycle Demo** tab now connects sample registration, document name selection, internal review and correction, opportunity publication, category matching, bid submission, a sample closing control, evaluation outcome, contract stage progression and activity history. It saves synthetic records to this browser only. File contents are neither uploaded nor retained; the selected file name and size are recorded for the demonstration. The demo has no real authentication or separation of users, and its activity history can be cleared locally. Do not enter real contractor data, banking details, confidential estimates or tender documents.
+
+The original dashboard numbers, sample supplier security, OTP, CSD check, governance alerts, rating and most 143-point checklist items remain illustrative. A check mark in the acceptance register means represented in the design or interface, not production complete.
+
 ## Important Phase 1 boundary
 This is a public front-end prototype and therefore uses demo data only. It does **not** store real Citra procurement information, contractor personal information, banking details, IDs, confidential budgets, credentials or production documents.
 
